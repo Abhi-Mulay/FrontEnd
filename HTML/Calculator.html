@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            gap: 10px;
+            color: aliceblue;
+            background-color: black;
+            width: 40%;
+            margin: auto;
+            padding: 10px 0px 50px 50px;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+        }
+        
+        .m button{
+            color: aliceblue;
+            opacity: 0.5;
+            width: 65px;
+            margin-left: 20px;
+            height: 30px;
+            border: none;
+            background-color: transparent;
+            border-radius: 5px;
+        }
+        .heading{
+            
+            width: 100%;
+            margin: auto;
+        }
+        .menu{
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto auto auto auto auto auto;
+        }
+        .menu button{
+            width: 100px;
+            color: aliceblue;
+            background-color: rgb(36, 35, 35);
+            margin-bottom: 5px;
+            height: 50px;
+            font-size: large;
+            border: none;
+            border-radius: 5px;
+        }
+        .menu button:hover{
+            background-color: rgb(62, 61, 61);
+        }
+        
+        input{
+            height: 50px;
+            width: 90%;
+            font-size: large;
+            margin: auto;
+            border: none;
+            color: aliceblue;
+            background-color: black;
+        }
+       
+        .menu #equalTo{
+            width: 100px;
+            color: aliceblue;
+            background-color: orangered;
+            margin-bottom: 5px;
+            height: 50px;
+            border: none;
+            font-size: large;
+            border-radius: 5px;
+        }
+        .menu #equalTo:hover{
+            background-color: rgb(246, 105, 54);
+        }
+        #input{
+            font-size: 50px;
+        }
+        @media screen and (max-width: 768px) {
+    .container {
+        width: 80%;
+    }
+    .menu button {
+        width: 70px;
+        height: 45px;
+        font-size: medium;
+    }
+    .menu #equalTo {
+        width: 70px;
+        height: 45px;
+    }
+    input {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    .menu {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .menu button {
+        width: 60px;
+        height: 40px;
+        font-size: small;
+    }
+    .menu #equalTo {
+        width: 60px;
+        height: 40px;
+    }
+    input {
+        font-size: 24px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h4>Chalculator</h4>
+            <h1>Standard</h1>
+            <input type="text" id="input" value="" >
+        </div>
+        <div class="m">
+            <button>MC</button>
+            <button>MR</button>
+            <button>M+</button>
+            <button>M-</button>
+            <button>MS</button>
+            <button>M</button>
+        </div>
+        <div class="menu">
+            <button id="percent" >%</button>
+            <button id="ce">CE</button>
+            <button id="c">C</button>
+            <button id="back">⌫</button>
+            <button id="oneX">1/x</button>
+            <button id="square">x²</button>
+            <button id="squareRoot">√x</button>
+            <button id="d">÷</button>
+            <button id="seven">7</button>
+            <button id="eight">8</button>
+            <button id="nine">9</button>
+            <button id="mul">X</button>
+            <button id="four">4</button>
+            <button id="five">5</button>
+            <button id="six">6</button>
+            <button id="minus">-</button>
+            <button id="one">1</button>
+            <button id="two">2</button>
+            <button id="three">3</button>
+            <button id="plus">+</button>
+            <button id="nigative">+/-</button>
+            <button id="zero">0</button>
+            <button id="dot">.</button>
+            <button id="equalTo">=</button>
+        </div>
+    </div>
+    <script type="text/javaScript">
+        let first,second=0,result=0;
+        let choice=0;
+        // let operator=0;
+    let input=document.getElementById("input");
+    let zero=document.getElementById("zero");
+    let one=document.getElementById("one");
+    let two=document.getElementById("two");
+    let three=document.getElementById("three");
+    let four=document.getElementById("four");
+    let five=document.getElementById("five");
+    let six=document.getElementById("six");
+    let seven=document.getElementById("seven");
+    let eight=document.getElementById("eight");
+    let nine=document.getElementById("nine");
+    
+    let percent=document.getElementById("percent");
+    let ce=document.getElementById("ce");
+    let c=document.getElementById("c");
+    let back=document.getElementById("back");
+    let oneX=document.getElementById("oneX");
+    let square=document.getElementById("square");
+    let squareRoot=document.getElementById("squareRoot");
+    let d=document.getElementById("d");
+    let mul=document.getElementById("mul"); 
+    let minus=document.getElementById("minus");
+    let plus=document.getElementById("plus");
+    let nigative=document.getElementById("nigative");
+    let dot=document.getElementById("dot");
+    let equalTo=document.getElementById("equalTo");
+
+    let value;
+
+    input.addEventListener("click",()=>{
+        value=parseFloat(input.value.trim());
+    })
+
+    function add(val){
+        input.value+=val;
+        console.log(value);
+    }
+    
+    zero.addEventListener("click",() =>{
+        add(0);
+    });
+    one.addEventListener("click",() =>{
+        add(1);
+    });
+
+    two.addEventListener("click",() =>{
+        add(2);
+    });
+    three.addEventListener("click",() =>{
+        add(3);
+    });
+    four.addEventListener("click",() =>{
+        add(4);
+    });
+    five.addEventListener("click",() =>{
+        add(5);
+    });
+    six.addEventListener("click",() =>{
+        add(6);
+    });
+
+    seven.addEventListener("click",() =>{
+        add(7);
+    });
+    
+    eight.addEventListener("click",() =>{
+        add(8);
+    });
+    nine.addEventListener("click",() =>{
+        add(9);
+    });
+    dot.addEventListener("click",() =>{
+        add(".");
+    });
+
+
+    oneX.addEventListener("click" , ()=>{
+        first=input.value;
+       first=1/parseFloat(first);
+       result=first;
+       input.value=result;
+    });
+
+    ce.addEventListener("click",() =>{
+       
+        input.value="";
+    });
+
+    c.addEventListener("click",() =>{
+        value=input.value=0;
+    });
+
+    back.addEventListener("click",() =>{
+        value=input.value=input.value.slice(0, -1);
+    });
+    
+    plus.addEventListener("click", () =>{
+       
+        first=input.value;
+       
+        value=input.value="";
+        choice=1;
+    });
+    
+    minus.addEventListener("click", () =>{
+       
+       first=input.value;
+       
+       value=input.value="";
+       choice=2;
+   });
+
+   mul.addEventListener("click", () =>{
+       
+       first=input.value;
+     
+       value=input.value="";
+       choice=3;
+   });
+
+   
+   percent.addEventListener("click", () =>{
+       
+       first=input.value;
+       
+       choice=4;
+   });
+ 
+   
+   d.addEventListener("click", () =>{
+       
+       first=input.value;
+      
+       value=input.value="";
+       choice=5;
+   });
+   square.addEventListener("click", () =>{
+       
+       first=input.value;
+       first=parseFloat(first)*parseFloat(first);
+       result=first;
+       input.value=result;
+    });
+
+    squareRoot.addEventListener("click", () =>{
+       
+       first=input.value;
+       result=Math.sqrt(first);
+       input.value=result;
+      
+    });
+ 
+        equalTo.addEventListener("click", () =>{
+      
+      if(input.value !="" && first!=""){
+          second=input.value;
+         
+      switch(choice){
+          case 1:
+          result=parseFloat(first)+parseFloat(second);
+        
+          break;
+
+          case 2:
+          result=parseFloat(first)-parseFloat(second);
+        
+          break;
+
+          case 3:
+          result=parseFloat(first)*parseFloat(second);
+        
+          break;
+          
+          case 4:
+          result=(parseFloat(first)*parseFloat(second)) / 100;
+        
+          break;
+          case 5:
+          result=parseFloat(first)*parseFloat(second);
+       
+          break;
+
+
+          
+      }
+      input.value=result;
+      }
+  });
+    
+   
+   
+    </script>
+</body>
+</html>

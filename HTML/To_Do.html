@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            height: 50px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="input" placeholder="Enter the element" >
+        <button id="Add" onclick="ToDo()">Add</button>
+        <ul id="Txtlist"></ul>
+    </div>
+    
+    <script type="text/javascript">
+
+   
+        
+    function ToDo() {
+        let input=document.getElementById("input");
+       
+        if(input.value.trim()===""){
+            alert("pleas enter the something");
+            return;
+        }
+        let txtList=document.getElementById("Txtlist");
+        
+         let li=document.createElement("li");
+        li.innerHTML=input.value;
+        
+        let removeBTN=document.createElement("button");
+        removeBTN.innerHTML="❌";
+
+        removeBTN.addEventListener("click",()=>{
+            txtList.removeChild(li);
+        })
+        li.appendChild(removeBTN);
+       txtList.appendChild(li);
+        input.value="";
+
+    }
+    </script>
+</body>
+</html>

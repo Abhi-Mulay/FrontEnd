@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #b{
+            height: 100px;
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="b" onclick="Addimage()">add image</button>
+    <div id="Image">
+        
+    </div>
+    <script type="text/javaScript">
+       
+        let i=1;
+        function Addimage() {
+
+            if(i>10){
+                alert("Your limit is full");
+                return;
+            }
+
+            let imageContainer=document.getElementById("Image");
+
+            let img=document.createElement("img");
+           
+            img.src=`/imageJavaScript/${i}.jpg`;
+            
+
+            img.alt="Dynamic Image";
+            img.style.height="100px";
+            img.style.width="100px";
+            
+            
+            let removeBTN=document.createElement("button");
+            removeBTN.innerHTML="❌";
+            removeBTN.style.height="20px";
+
+
+            imageContainer.appendChild(img);
+            imageContainer.appendChild(removeBTN);
+
+            removeBTN.addEventListener("click", () =>{
+                img.remove();
+                removeBTN.remove();
+            });
+            i++;
+            
+        }
+
+    </script>
+</body>
+</html>
